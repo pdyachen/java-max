@@ -1,3 +1,20 @@
 javac -d build/ com/orcchg/javacourse/*.java
 java -cp build com.orcchg.javacourse.SampleOne
 
+javac -d build/ com/orcchg/javalib/LibraryTwo.java
+javac -d build/ -cp build/ com/orcchg/javacourse/CallLibraryTwo.java
+java -cp build/ com.orcchg.javacourse.CallLibraryTwo
+
+javac -d build/ com/orcchg/javalib/LibraryThree.java
+javac -d build/ -cp build/ com/orcchg/javacourse/CallLibraryThree.java
+cd build ; jar -cf orcchg-javalib-three.jar com/orcchg/javalib/LibraryThree.class ; cd ..
+rm build/com/orcchg/javalib/LibraryThree.class
+mv build/orcchg-javalib-three.jar .
+java -cp build/:orcchg-javalib-three.jar com.orcchg.javacourse.CallLibraryThree
+// java -cp build/ com.orcchg.javacourse.CallLibraryThree
+
+cd build ; jar -cfm orcchg-javalib-four-exe.jar librarythree.mf com/orcchg/javalib/LibraryFour ; cd ..
+mv build/orcchg-javalib-four-exe.jar .
+rm build/com/orcchg/javalib/LibraryFour.class
+java -jar orcchg-javalib-four-exe.jar
+
