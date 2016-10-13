@@ -1,0 +1,12 @@
+javac -d build/ com/orcchg/javacourse/*.java
+javah -d cpp/ -cp build/ com.orcchg.javacourse.NativeOne
+
+cd cpp
+g++ -fPIC -I/home/maxim/Software/jdk1.8.0_74/include -I/home/maxim/Software/jdk1.8.0_74/include/linux implOne.cpp -c
+g++ -shared -Wl,-soname,libimplOne.so -o libimplOne.so implOne.o
+mv libimplOne.so ..
+java -Djava.library.path="/home/maxim/Software/Projects/JavaCourse/Lesson_1" -cp build/ com.orcchg.javacourse.CallNativeOne
+java -Djava.library.path="." -cp build/ com.orcchg.javacourse.CallNativeOne
+
+// https://examples.javacodegeeks.com/java-basics/java-library-path-what-is-it-and-how-to-use/
+
