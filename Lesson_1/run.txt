@@ -6,7 +6,7 @@ g++ -fPIC -I/home/maxim/Software/jdk1.8.0_74/include -I/home/maxim/Software/jdk1
 g++ -shared -Wl,-soname,libimplOne.so -o libimplOne.so implOne.o
 mv libimplOne.so ..
 java -Djava.library.path="/home/maxim/Software/Projects/JavaCourse/Lesson_1" -cp build/ com.orcchg.javacourse.CallNativeOne
-java -Djava.library.path="." -cp build/ com.orcchg.javacourse.CallNativeOne
+// #or java -Djava.library.path="." -cp build/ com.orcchg.javacourse.CallNativeOne
 
 // https://examples.javacodegeeks.com/java-basics/java-library-path-what-is-it-and-how-to-use/
 

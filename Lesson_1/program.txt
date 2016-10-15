@@ -1,0 +1,12 @@
+1. inheritance
+2. abstract class
+3. polymorphism
+4. native method, c++ and JNI
+5. JNI types
+6. JNI strings
+7. pass Java objects to native method
+8. Call java method from native
+
+Exercises: write native method, calculating square and length of circle.
+Move native libraries into JAR
+
