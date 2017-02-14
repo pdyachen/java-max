@@ -1,0 +1,30 @@
+Task:
+
+1. Figure out, how to compile these sources
+2. Compile sqlite sources into single libsqlite.so
+3. Compile the rest sources into libdatabase.so
+4. Compile executable 'init.cpp' for database and link it with each *so libraries
+5. Run executable compiled from 'init.cpp' and record all data from 'raw_data.json' to database
+6. Examine database API from 'models_db.h' file
+7. Write java API for database using JNI and plain Java
+8. Make executable on plain Java, fetching data from database, and demonstrate how it works
+
+You should demonstrate, how to:
+
+a) fetch all items from db (compact models, w/o full details)
+a') given item's id, fetch full-detais about some item
+b) fetch up to LIMIT items, starting from OFFSET position (LIMIT and OFFSET are integers)
+c) get total size of database (integer value)
+d) fetch all items, filtered by some genres (genre is a String)
+
+possible genres:
+  /**
+   * {"alternative", "african", "bard", "blues", "classical", "conjazz", "country",
+   *  "dance", "disco", "dnb", "dubstep", "dub", "electronics", "estrada", "folk",
+   *  "house", "indie", "industrial", "jazz", "latinfolk", "local-indie", "lounge",
+   *  "metal", "newwave", "pop", "prog", "punk", "rap", "reggae", "relax", "rnb",
+   *  "rock", "rusfolk", "rusrap", "rusrock", "soul", "soundtrack", "trance", "ukrrock",
+   *  "urban", "videogame"}
+   */
+
+don't modify database, so don't touch add* and remove* functions.
