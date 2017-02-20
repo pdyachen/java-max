@@ -1,0 +1,14 @@
+gcc -fPIC sqlite/sqlite3.c sqlite/shell.c -c
+gcc -shared -Wl,-soname,libsqlite.so -o libsqlite.so shell.o sqlite3.o
+rm *.o
+g++ -std=c++11 -fPIC -I./include -I. common/*.cpp database/*.cpp -c
+rm init.o ; g++ -shared -Wl,-soname,libdb.so -o libdb.so *.o
+rm *.o
+g++ -std=c++11 database/init.cpp -o init -I. -I./include -L. -ldb -lsqlite -lpthread -ldl
+mkdir build ; cd build/
+export LD_LIBRARY_PATH=.. ; ./init
+sqlite3 MusicSquareServerDatabase.db
+.schema
+select id,genres from models;
+.q
+
