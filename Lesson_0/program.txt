@@ -1,7 +1,0 @@
-1. compile and run java
-2. inner and outer class, this
-3. anonymous class
-4. memory leak
-5. library & executable class
-6. jar
-
