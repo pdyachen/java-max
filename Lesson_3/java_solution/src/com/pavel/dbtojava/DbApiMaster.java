@@ -12,6 +12,10 @@ class DbApiMaster {
 	public native int getTotalRowsNumber();	
 	public native int getTotalRowsNumberLike(String wildCard);
 	public native ArrayList<ShortModel> getAllSmallModels(ShortModel smodel);
+	public static native String[] getGenresJni(int model_Id);
+	public static native String getModelName(int id);
+	public static native String getModelBigPicture(int id);
+	public static native String getModelSmallPicture(int id);
 	
 
 	public static void main(String[] args) {
@@ -33,8 +37,23 @@ class DbApiMaster {
 			System.out.println(smodel);
 		}**/
 
-		Model testModel = new Model.Builder(modelId).setGenres().build();
-		System.out.println("Full model testing \n" + "Name: " + testModel.getName() + "\n" + "Genres: " + Arrays.toString(testModel.getGenres()));
+
+
+		Model testModel = new Model.Builder(modelId)
+										   .setGenres()
+										   .setCovers()
+										   .build();
+
+		String resultString = new StringBuilder("Full model testing \nName: ")
+											   .append(testModel.getName())
+											   .append("\n")
+											   .append("Genres: ")
+											   .append(Arrays.toString(testModel.getGenres()))
+											   .append("\n")
+											   .append("Covers: ")
+											   .append(testModel.getCovers())
+											   .toString();						   
+		System.out.println(resultString);
 		
 	}
 	

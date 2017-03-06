@@ -1,5 +1,6 @@
 package com.pavel.dbtojava;
 import java.util.Map;
+import java.util.HashMap;
 
 class Model {
 	private int id;
@@ -29,7 +30,7 @@ class Model {
 
 		public Builder(int id) {
 			this.id = id;
-			this.name = ShortModel.getModelName(id);
+			this.name = DbApiMaster.getModelName(id);
 		}
 
 		Builder setTrackCount(int trackCount) {
@@ -43,7 +44,7 @@ class Model {
 		}
 
 		Builder setGenres() {
-			this.genres = getGenresJni(this.id);
+			this.genres = DbApiMaster.getGenresJni(this.id);
 			return this;
 		}
 
@@ -57,16 +58,16 @@ class Model {
 			return this;
 		}
 
-		Builder setCovers(Map<String,String> covers) {
-			this.covers = covers;
+		Builder setCovers() {
+			this.covers = new HashMap<String, String>();
+			this.covers.put("Big Picture", DbApiMaster.getModelBigPicture(this.id));
+			this.covers.put("Small Picture", DbApiMaster.getModelSmallPicture(this.id));
 			return this;
 		}
 
 		public Model build() {
 			return new Model(this);
 		}
-
-		public static native String[] getGenresJni(int model_Id);
 
 		
 	}

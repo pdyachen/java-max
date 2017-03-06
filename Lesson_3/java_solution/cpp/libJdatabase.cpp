@@ -4,6 +4,14 @@
 
 db::ModelsDatabase model_db;
 
+
+JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelName
+(JNIEnv * jenv, jclass, jint model_id) {
+  std::string cstring_result = model_db.getSmallModel(model_id).getName();
+  jstring result = jenv->NewStringUTF((char*)cstring_result.c_str());    
+  return result;
+}
+
 JNIEXPORT jint JNICALL Java_com_pavel_dbtojava_DbApiMaster_getTotalRowsNumber
   (JNIEnv *, jobject) {  	
     //std::cout << "Simple getTotalRows call " << "\n";
@@ -23,16 +31,17 @@ JNIEXPORT jint JNICALL Java_com_pavel_dbtojava_DbApiMaster_getTotalRowsNumberLik
   	return count_result;
   }
 
-  JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_ShortModel_getModelName
-  (JNIEnv * jenv, jobject, jint model_id) {
-    std::string cstring_result = model_db.getSmallModel(model_id).getName();
+
+  JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelSmallPicture
+  (JNIEnv * jenv, jobject, jint model_id)  {
+    std::string cstring_result = model_db.getSmallModel(model_id).getCoverSmall();
     jstring result = jenv->NewStringUTF((char*)cstring_result.c_str());    
     return result;
   }
 
-  JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_ShortModel_getModelSmallpicture
-  (JNIEnv * jenv, jobject, jint model_id)  {
-    std::string cstring_result = model_db.getSmallModel(model_id).getCoverSmall();
+  JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelBigPicture
+  (JNIEnv * jenv, jclass, jint model_id) {
+    std::string cstring_result = model_db.getModel(model_id).getCoverBig();
     jstring result = jenv->NewStringUTF((char*)cstring_result.c_str());    
     return result;
   }
@@ -58,7 +67,7 @@ JNIEXPORT jint JNICALL Java_com_pavel_dbtojava_DbApiMaster_getTotalRowsNumberLik
     return list_object;
   }
 
-  JNIEXPORT jobjectArray JNICALL Java_com_pavel_dbtojava_Model_00024Builder_getGenresJni
+  JNIEXPORT jobjectArray JNICALL Java_com_pavel_dbtojava_DbApiMaster_getGenresJni
   (JNIEnv * jenv, jclass, jint model_id) {    
     jclass string_clazz = (jenv)->FindClass("java/lang/String");
     std::vector<std::string> vect; //= new std::vector<std::string>();

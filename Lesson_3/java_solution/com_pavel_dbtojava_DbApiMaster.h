@@ -7,31 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/*
- * Class:     com_pavel_dbtojava_DbApiMaster
- * Method:    getModelName
- * Signature: (I)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelName
-  (JNIEnv *, jclass, jint);
-
-/*
- * Class:     com_pavel_dbtojava_ShortModel
- * Method:    getModelSmallpicture
- * Signature: (I)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelSmallPicture
-  (JNIEnv *, jobject, jint);
-
-/*
- * Class:     com_pavel_dbtojava_DbApiMaster
- * Method:    getModelBigPicture
- * Signature: (I)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelBigPicture
-  (JNIEnv *, jclass, jint);
-	
 /*
  * Class:     com_pavel_dbtojava_DbApiMaster
  * Method:    getTotalRowsNumber
@@ -64,6 +39,29 @@ JNIEXPORT jobject JNICALL Java_com_pavel_dbtojava_DbApiMaster_getAllSmallModels
 JNIEXPORT jobjectArray JNICALL Java_com_pavel_dbtojava_DbApiMaster_getGenresJni
   (JNIEnv *, jclass, jint);
 
+/*
+ * Class:     com_pavel_dbtojava_DbApiMaster
+ * Method:    getModelName
+ * Signature: (I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelName
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     com_pavel_dbtojava_DbApiMaster
+ * Method:    getModelBigPicture
+ * Signature: (I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelBigPicture
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     com_pavel_dbtojava_DbApiMaster
+ * Method:    getModelSmallPicture
+ * Signature: (I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_com_pavel_dbtojava_DbApiMaster_getModelSmallPicture
+  (JNIEnv *, jclass, jint);
 
 #ifdef __cplusplus
 }
