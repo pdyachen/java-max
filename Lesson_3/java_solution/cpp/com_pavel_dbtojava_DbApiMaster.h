@@ -49,6 +49,9 @@ JNIEXPORT jint JNICALL Java_com_pavel_dbtojava_DbApiMaster_getTotalRowsNumberLik
 JNIEXPORT jobject JNICALL Java_com_pavel_dbtojava_DbApiMaster_getAllSmallModels
   (JNIEnv *, jobject, jobject);
 
+JNIEXPORT jobjectArray JNICALL Java_com_pavel_dbtojava_Model_00024Builder_getGenresJni
+ (JNIEnv *, jclass, jint);
+
 #ifdef __cplusplus
 }
 #endif

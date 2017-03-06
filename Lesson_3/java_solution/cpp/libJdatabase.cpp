@@ -57,3 +57,21 @@ JNIEXPORT jint JNICALL Java_com_pavel_dbtojava_DbApiMaster_getTotalRowsNumberLik
     delete vect;
     return list_object;
   }
+
+  JNIEXPORT jobjectArray JNICALL Java_com_pavel_dbtojava_Model_00024Builder_getGenresJni
+  (JNIEnv * jenv, jclass, jint model_id) {    
+    jclass string_clazz = (jenv)->FindClass("java/lang/String");
+    std::vector<std::string> vect; //= new std::vector<std::string>();
+    vect = model_db.getModel(model_id).getGenres();
+    //std::cout << "Message from C++ " << vect[1] << "\n";
+    jobjectArray array_to_pass = jenv->NewObjectArray(3, string_clazz, NULL);
+    for (int i = 0; i < vect.size(); ++i)
+    {
+      jstring string_element = jenv->NewStringUTF((char*)vect[i].c_str());
+      jenv->SetObjectArrayElement(array_to_pass, i, string_element);
+      
+    }
+    //delete vect;
+    return array_to_pass;
+
+  }

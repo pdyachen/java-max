@@ -9,7 +9,7 @@ class ShortModel {
 		System.loadLibrary("Jdatabase"); //libJdatabase.so
 	}
 
-	public native String getModelName(int id);
+	public static native String getModelName(int id);
 	public native String getModelSmallpicture(int id);
 
 	public ShortModel(int id) {

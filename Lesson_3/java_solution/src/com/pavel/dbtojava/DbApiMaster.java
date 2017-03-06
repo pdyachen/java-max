@@ -1,6 +1,7 @@
 package com.pavel.dbtojava;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 
 class DbApiMaster {
@@ -23,14 +24,17 @@ class DbApiMaster {
 		System.out.println("Total rows in the table with name like " + filter + " : " + totalRows);
 
 
-		int ModelId = 100500;
-		ShortModel shortModel = new ShortModel(ModelId);		
+		int modelId = 100500;
+		ShortModel shortModel = new ShortModel(modelId);		
 		System.out.println(shortModel.toString());
 
-		List<ShortModel> smodels = apiMaster.getAllSmallModels(new ShortModel());
+		/**List<ShortModel> smodels = apiMaster.getAllSmallModels(new ShortModel());
 		for (ShortModel smodel : smodels ) {
 			System.out.println(smodel);
-		}
+		}**/
+
+		Model testModel = new Model.Builder(modelId).setGenres().build();
+		System.out.println("Full model testing \n" + "Name: " + testModel.getName() + "\n" + "Genres: " + Arrays.toString(testModel.getGenres()));
 		
 	}
 	
